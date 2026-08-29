@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-// Livro representa um livro do acervo.
 type Livro struct {
 	Titulo        string
 	Autor         string
@@ -10,7 +9,6 @@ type Livro struct {
 	Disponivel    bool
 }
 
-// contarDisponiveis retorna quantos livros estão disponíveis.
 func contarDisponiveis(livros []Livro) int {
 	total := 0
 	for _, l := range livros {
@@ -21,7 +19,6 @@ func contarDisponiveis(livros []Livro) int {
 	return total
 }
 
-// buscarPorAutor retorna uma nova slice com os livros do autor informado.
 func buscarPorAutor(livros []Livro, autor string) []Livro {
 	var encontrados []Livro
 	for _, l := range livros {
@@ -32,7 +29,6 @@ func buscarPorAutor(livros []Livro, autor string) []Livro {
 	return encontrados
 }
 
-// descrever formata um livro em uma linha.
 func descrever(l Livro) string {
 	status := "indisponível"
 	if l.Disponivel {
@@ -42,7 +38,6 @@ func descrever(l Livro) string {
 }
 
 func exercicio3() {
-	// 1. Slice de livros com literais de struct.
 	livros := []Livro{
 		{Titulo: "Dom Casmurro", Autor: "Machado de Assis", AnoPublicacao: 1899, Disponivel: true},
 		{Titulo: "Memórias Póstumas", Autor: "Machado de Assis", AnoPublicacao: 1881, Disponivel: false},
@@ -56,10 +51,8 @@ func exercicio3() {
 		fmt.Println("   " + descrever(l))
 	}
 
-	// 2. Contagem de livros disponíveis.
 	fmt.Printf("2) Livros disponíveis: %d de %d\n", contarDisponiveis(livros), len(livros))
 
-	// 3. Busca por autor.
 	autor := "Machado de Assis"
 	encontrados := buscarPorAutor(livros, autor)
 	fmt.Printf("3) Livros de %s (%d):\n", autor, len(encontrados))
@@ -67,7 +60,6 @@ func exercicio3() {
 		fmt.Println("   " + descrever(l))
 	}
 
-	// Autor sem livros no acervo: a slice retornada vem vazia (nil).
 	inexistente := buscarPorAutor(livros, "Clarice Lispector")
 	fmt.Printf("   Livros de Clarice Lispector: %d\n", len(inexistente))
 }

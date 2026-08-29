@@ -7,14 +7,10 @@ import (
 	"strings"
 )
 
-// limparTela move o cursor para o topo e apaga o conteúdo do terminal
-// usando sequências de escape ANSI.
 func limparTela() {
 	fmt.Print("\033[H\033[2J")
 }
 
-// pausar espera o ENTER para que a saída do exercício possa ser lida
-// antes de o menu limpar a tela novamente.
 func pausar(leitor *bufio.Scanner) {
 	fmt.Print("\nPressione ENTER para voltar ao menu...")
 	leitor.Scan()
@@ -34,7 +30,6 @@ func main() {
 		fmt.Print("Escolha uma opção: ")
 
 		if !leitor.Scan() {
-			// Fim da entrada (Ctrl+D ou pipe encerrado).
 			fmt.Println()
 			return
 		}
